@@ -24,7 +24,7 @@
 <body>
     <div id="audio-container1">
     <audio id="myAudio" controls>
-        <source src="https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" type="audio/mpeg">
+        <source src="https://github.com/1026Cammy/Cammy/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" type="audio/mpeg">
       </audio>
     </div>
   <div id="content-container1">
@@ -33,7 +33,7 @@
 
   <script>
 const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true';
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/thkin%20abt%20u%20MW.mp3?raw=true';
   </script>
 </body>
 </html>
