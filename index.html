@@ -1,102 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Cammy the DJ</title>
+  <title>New Music Lab Project</title>
   <style>
     body {
-      background-color: rgb(37, 37, 37);
+      font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
     }
-    a {
-      color: aliceblue;
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
-    #audio-container1 {
-      height: 450px;
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .music-player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+    #music-canvas {
       width: 100%;
-      overflow: hidden;
+      height: 300px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
     }
-
-    #content-container1 {
-      margin-top: 500px;
+    .controls {
+      margin-top: 20px;
+    }
+    button {
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
-    <div class="audio-container1">
-    <audio id="myAudio" controls preload="none">
-        <source src="https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
-
-      <div class="audio-container1">
-      <audio id="myAudio" controls preload="none">
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true" type="audio/mpeg">
-        </audio>
+  <div class="container">
+    <h1>New Music Lab Project</h1>
+    <div class="music-player">
+      <canvas id="music-canvas"></canvas>
+      <div class="controls">
+        <button id="play-button">Play</button>
+        <button id="pause-button">Pause</button>
+        <button id="stop-button">Stop</button>
       </div>
-  
-      <div class="audio-container1">
-        <audio id="myAudio" controls preload="none">
-            <source src="https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted.mp3?raw=true" type="audio/mpeg">
-    </audio>
-  </div>
-  
-  <div class="audio-container1">
-    <audio id="myAudio" controls preload="none">
-        <source src="https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby.mp3?raw=true" type="audio/mpeg">
-      </audio>
     </div>
-
-    <div class="audio-container1">
-      <audio id="myAudio" controls preload="none">
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
-        </audio>
-      </div>
-  
-      <div class="audio-container1">
-        <audio id="myAudio" controls preload="none">
-            <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
-
-    <div class="audio-container1">
-      <audio id="myAudio" controls preload="none">
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
-
-    <div class="audio-container1">
-      <audio id="myAudio" controls preload="none">
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
-
-  <div class="content-container1">
-    <h1>One song a day, sadness away. Enjoy!</h1>
   </div>
 
   <script>
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true';
-  
-  const audioElement = document.getElementById('myAudio');
-  audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true';
+    // Declare and initialize the audio element
+    const audio = new Audio();
 
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted?raw=true.mp3';
+    // Assign an array of song files to the audio source
+    audio.src = [
+      'https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3'
+    ];
 
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby?raw=true.mp3';
+    let currentIndex = 0;
 
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true';
+    // Function to play the next song
+    function playNextSong() {
+      if (currentIndex < audio.src.length) {
+        audio.src = audio.src[currentIndex];
+        audio.play();
+        currentIndex++;
+      } else {
+        // Reached the last song, stop playback
+        audio.pause();
+      }
+    }
 
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true';
-</script>
+    // Add event listeners for the buttons
+    document.getElementById('play-button').addEventListener('click', playNextSong);
+    document.getElementById('pause-button').addEventListener('click', () => audio.pause());
+    document.getElementById('stop-button').addEventListener('click', () => {
+      audio.pause();
+      audio.currentTime = 0;
+      currentIndex = 0;
+    });
+  </script>
 </body>
 </html>
-
