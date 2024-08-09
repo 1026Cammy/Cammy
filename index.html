@@ -1,83 +1,108 @@
-<!DOCTYPE html>
-<html>
+a<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Digital Jukebox</title>
+  <meta charset="UTF-8">
+  <title>Cammy the DJ</title>
   <style>
-    /* Add some basic styling */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      padding: 20px;
+      background-color: rgb(37, 37, 37);
+      margin: 0;
     }
-    
-    #jukebox {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    a {
+      color: aliceblue;
     }
-    
-    ul {
-      list-style-type: none;
-      padding: 0;
+    #audio-container1 {
+      height: 450px;
+      width: 100%;
+      overflow: hidden;
     }
-    
-    li {
-      cursor: pointer;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    li:hover {
-      background-color: #f2f2f2;
+
+    #content-container1 {
+      margin-top: 500px;
     }
   </style>
 </head>
 <body>
-  <div id="jukebox">
-    <h1>Digital Jukebox</h1>
-    <ul id="playlist">
-      <!-- Playlist items will be dynamically added here -->
-    </ul>
+    <div class="audio-container1">
+    <audio id="myAudio" controls>
+        <source src="https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" type="audio/mpeg">
+      </audio>
+    </div>
+
+    
+      <div class="audio-container1">
+      <audio id="myAudio" controls>
+          <source src="https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true" type="audio/mpeg">
+        </audio>
+      </div>
+  
+      <div class="audio-container1">
+        <audio id="myAudio" controls>
+            <source src="https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted.mp3?raw=true" type="audio/mpeg">
+    </audio>
   </div>
 
+
+  <div class="audio-container1">
+    <audio id="myAudio" controls>
+        <source src="https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby.mp3?raw=true" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="audio-container1">
+      <audio id="myAudio" controls>
+          <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
+        </audio>
+      </div>
+  
+      <div class="audio-container1">
+        <audio id="myAudio" controls>
+            <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
+      </audio>
+    </div>
+
+
+    <div class="audio-container1">
+      <audio id="myAudio" controls>
+          <source src="https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="audio-container1">
+      <audio id="myAudio" controls>
+          <source src="https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true" type="audio/mpeg">
+      </audio>
+    </div>
+
+  <div class="content-container1">
+    <h1>One song a day, sadness away. Enjoy!</h1>
+  </div>
+
+
+
+  
   <script>
-    // Example GitHub repository URL
-    const GITHUB_REPO_URL = 'https://github.com/1026Cammy/Cammy';
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true';
+  
+  const audioElement = document.getElementById('myAudio');
+  audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true';
 
-   // Function to fetch music data
-function fetchMusicData() {
-  fetch('music-data.json')
-    .then(response => response.json())
-    .then(data => {
-      // Populate the playlist
-      populatePlaylist(data);
-    })
-    .catch(error => {
-      console.error('Error fetching music data:', error);
-    });
-}
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted?raw=true.mp3';
 
-// Function to populate the playlist
-function populatePlaylist(musicData) {
-  const playlist = document.getElementById('playlist');
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby?raw=true.mp3';
 
-  musicData.forEach(song => {
-    const li = document.createElement('li');
-    li.textContent = song.name;
-    li.addEventListener('click', () => playSong(song.url));
-    playlist.appendChild(li);
-  });
-}
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true';
 
-// Function to play a song
-function playSong(songUrl) {
-  // Code to play the selected song goes here
-  console.log(`Playing song: ${songUrl}`);
-}
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true';
 
-// Fetch music data and populate the playlist
-fetchMusicData();
-  </script>
+const audioElement = document.getElementById('myAudio');
+audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true';
+</script>
 </body>
 </html>
+
