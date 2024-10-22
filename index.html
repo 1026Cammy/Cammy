@@ -1,135 +1,126 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cammy the DJ</title>
-  <style>
-    body {
-      background-color: rgb(37, 37, 37);
-      margin: 0;
-    }
-    a {
-      color: aliceblue;
-    }
-    #audio-container1 {
-      height: 450px;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    #content-container1 {
-      margin-top: 500px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cammy the DJ:-Jukebox</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 20px; }
+        h1 { text-align: center; }
+        #songList { margin: 20px 0; }
+        button { margin: 5px; padding: 10px; font-size: 16px; cursor: pointer; }
+        #currentSong { font-weight: bold; margin-top: 20px; text-align: center; }
+        #controls { text-align: center; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <div class="audio-container1">
-    <audio id="myAudio" controls>
-        <source src="https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" type="audio/mpeg">
-      </audio>
+    <h1>Jukebox</h1>
+    <div id="currentSong">No song playing</div>
+    <div id="songList"></div>
+    <div id="controls">
+        <button id="playButton" disabled>Play</button>
+        <button id="pauseButton" disabled>Pause</button>
+        <button id="stopButton" disabled>Stop</button>
+        <button id="autoPlayButton" disabled>Auto Play</button>
     </div>
 
-    
-      <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true" type="audio/mpeg">
-        </audio>
-      </div>
-  
-      <div class="audio-container1">
-        <audio id="myAudio" controls>
-            <source src="https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted.mp3?raw=true" type="audio/mpeg">
-    </audio>
-  </div>
+    <script>
+        const songs = [
+        { title: "Song 1", artist: "Thinking about u", url: "https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true" },
+            { title: "Song 2", artist: "Freedom", url: "https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true" },
+            { title: "Song 3", artist: "Addicted", url: "https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted.mp3?raw=true" },
+            { title: "Song 4", artist: "Bricks", url: "https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby.mp3?raw=true" },
+            { title: "Song 5", artist: "Charlie XCX-Apple", url: "https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" },
+            { title: "Song 6", artist: "Fighter", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Keith%20Urban%20-%20The%20Fighter%20ft.%20Carrie%20Underwood.mp3" },
+            { title: "Song 7", artist: "Slip", url: "https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true" },
+            { title: "Song 8", artist: "MonaLisa", url: "https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true" },
+            { title: "Song 9", artist: "Brat summer-2 die 4", url: "https://github.com/1026Cammy/Cammy/raw/main/Charli%20xcx%20-%20Guess%20featuring%20Billie%20Eilish.mp3?raw=true" },
+            { title: "Song 10", artist: "Don't go away", url: "https://github.com/1026Cammy/Cammy/raw/main/Oasis_don't%20go%20away.mp3?raw=true" },
+            { title: "Song 11", artist: "Miss You", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Eminem,%20Post%20Malone%20-%20Miss%20YOU!%20(ft.%20Selena%20Gomez).mp3?raw=true" },
+            { title: "Song 12", artist: "Watermellon Moonshire", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Lainey%20Wilson_country%20music%20award.mp3?raw=true" },
+            { title: "Song 13", artist: "Sweet Dream", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/%20Eurythmics%20-%20Sweet%20Dreams%20(Are%20Made%20Of%20This).mp3?raw=true" },
+            { title: "Song 14", artist: "Fearless", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Jackson%20Dean_fearless.mp3?raw=true" },
+            { title: "Song 15", artist: "Can't take my eye off you", url: "https://github.com/1026Cammy/Cammy/blob/main/Can't%20take%20my%20eyes%20off%20you_Frankie%20Valli.mp3?raw=true" },
+            { title: "Song 16", artist: "Tom's diner", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Mentol%20+%20From%20Ksusha_Tom's%20diner.mp3?raw=true" }, 
+            { title: "Song 17", artist: "Drop the game", url: "https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Drop%20the%20game%7C%20Fume%20and%20Chet%20Faker.mp3?raw=true" },
+            { title: "Song 18", artist: "Angels like you", url: "https://github.com/1026Cammy/bestie/raw/refs/heads/main/Angels%20like%20you%20-%20Miley%20Cyrus.mp3?raw=true" },
+            { title: "Song 19", artist: "Kreisler's Liebesleid", url: "https://github.com/1026Cammy/bestie/raw/refs/heads/main/Angels%20like%20you%20-%20Miley%20Cyrus.mp3?raw=true" },
+            //Add more songs here
+        ];
 
+        const songList = document.getElementById('songList');
+        const currentSongDisplay = document.getElementById('currentSong');
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const stopButton = document.getElementById('stopButton');
+        const autoPlayButton = document.getElementById('autoPlayButton');
 
-  <div class="audio-container1">
-    <audio id="myAudio" controls>
-        <source src="https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+        let currentAudio = null;
+        let currentSongIndex = 0;
 
-    <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
-        </audio>
-      </div>
-  
-      <div class="audio-container1">
-        <audio id="myAudio" controls>
-            <source src="https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+        songs.forEach((song, index) => {
+            const button = document.createElement('button');
+            button.innerText = `${song.title} - ${song.artist}`;
+            button.onclick = () => selectSong(index);
+            songList.appendChild(button);
+        });
 
+        function selectSong(index) {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
 
-    <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+            currentSongIndex = index;
+            const selectedSong = songs[index];
+            currentAudio = new Audio(selectedSong.url);
+            currentAudio.onended = () => playNextSong();
+            currentSongDisplay.innerText = `Playing: ${selectedSong.title} by ${selectedSong.artist}`;
 
-    <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+            playButton.disabled = false;
+            pauseButton.disabled = false;
+            stopButton.disabled = false;
+            autoPlayButton.disabled = false;
+        }
 
- <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/raw/main/Charli%20xcx%20-%20Guess%20featuring%20Billie%20Eilish.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+        playButton.onclick = () => {
+            if (currentAudio) {
+                currentAudio.play();
+            }
+        };
 
+        pauseButton.onclick = () => {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+        };
 
+        stopButton.onclick = () => {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;  // Reset to start
+                resetControls();
+            }
+        };
 
+        autoPlayButton.onclick = () => {
+            playNextSong();
+        };
 
-   <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="https://github.com/1026Cammy/Cammy/raw/main/Oasis_don't%20go%20away.mp3?raw=true" type="audio/mpeg">
-      </audio>
-    </div>
+        function playNextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            selectSong(currentSongIndex);
+            if (currentAudio) {
+                currentAudio.play();
+            }
+        }
 
-  <div class="audio-container1">
-      <audio id="myAudio" controls>
-          <source src="
-https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Eminem,%20Post%20Malone%20-%20Miss%20YOU!%20(ft.%20Selena%20Gomez).mp3?raw=true" type="audio/mpeg">
-</audio>
-</div>
-  <div class="content-container1">
-    <h1>One song a day, sadness away. Enjoy!</h1>
-  </div>
-  
-  <script>
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/eSports.github.io/blob/main/thkin%20abt%20u%20MW.mp3?raw=true';
-  
-  const audioElement = document.getElementById('myAudio');
-  audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Anthony%20Hamilton%20%26%20Elayna_%20Freedom.m4r?raw=true';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Ben%20LOncle%20Soul%20-%20Addicted?raw=true.mp3';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Bricks_Meg%20Mac%20%26%20Matt%20Croby?raw=true.mp3';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Charli%20XCX%20Brat_Apple.mp3?raw=true';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Elliot%20Moss_Slip.mp3?raw=true';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/blob/main/Lojay%20x%20sarz%20-%20Monalisa.m4r?raw=true';
-
-const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/raw/main/Charli%20xcx%20-%20Guess%20featuring%20Billie%20Eilish.mp3?raw=true';
-
-
-    const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/raw/main/Oasis_don't%20go%20away.mp3?raw=true';
-
-    const audioElement = document.getElementById('myAudio');
-audioElement.src = 'https://github.com/1026Cammy/Cammy/raw/refs/heads/main/Eminem,%20Post%20Malone%20-%20Miss%20YOU!%20(ft.%20Selena%20Gomez).mp3?raw=true';
-</script>
+        function resetControls() {
+            currentSongDisplay.innerText = "No song playing";
+            playButton.disabled = true;
+            pauseButton.disabled = true;
+            stopButton.disabled = true;
+            autoPlayButton.disabled = true;
+        }
+    </script>
 </body>
 </html>
